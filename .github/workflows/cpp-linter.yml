@@ -8,5 +8,7 @@ jobs:
     steps:
       - name: cpp-linter
         uses: shenxianpeng/cpp-linter-action@master
+        with:
+          fetch-depth: 0
     env:
         GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
