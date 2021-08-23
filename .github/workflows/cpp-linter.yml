@@ -15,6 +15,5 @@ jobs:
         uses: shenxianpeng/cpp-linter-action@master
         with:
           style: 'llvm'
-          extensions: 'c'
           version: '11'
           
