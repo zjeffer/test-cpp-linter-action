@@ -1,12 +1,20 @@
 name: cpp-linter
 
-on: [pull_request]
+# Triggers the workflow on push or pull request events
+on:
+  push:
+  pull_request:
 jobs:
   cpp-linter:
     name: cpp-linter
     runs-on: ubuntu-latest
     steps:
-      - name: cpp-linter
+      - name: C/C++ Lint Action
+        env:
+            GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         uses: shenxianpeng/cpp-linter-action@master
-    env:
-        GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        with:
+          style: 'llvm'
+          extensions: 'c'
+          version: '11'
+          
