@@ -15,6 +15,6 @@ jobs:
         uses: shenxianpeng/cpp-linter-action@master-py
         with:
           style: 'google'
-          version: '12'
+          version: '11'
           diff-only: false
           verbosity: '10'
