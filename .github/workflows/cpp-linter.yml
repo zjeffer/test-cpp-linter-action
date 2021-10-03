@@ -17,5 +17,5 @@ jobs:
           style: 'google'
           version: '12'
           diff-only: true
-          verbosity: 20
+          verbosity: 50
           
