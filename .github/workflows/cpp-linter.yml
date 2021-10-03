@@ -16,6 +16,5 @@ jobs:
         with:
           style: 'google'
           version: '12'
-          diff-only: true
-          verbosity: '30'
-          
+          diff-only: false
+          verbosity: '10'
