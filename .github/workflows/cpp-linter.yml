@@ -9,6 +9,7 @@ jobs:
     name: cpp-linter
     runs-on: ubuntu-latest
     steps:
+      - uses: actions/checkout@v2
       - name: C/C++ Lint Action
         env:
             GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
