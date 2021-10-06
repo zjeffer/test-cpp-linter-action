@@ -1,19 +1,27 @@
 name: cpp-linter
 
+# Workflow syntax:
+# https://help.github.com/en/articles/workflow-syntax-for-github-actions
+
 # Triggers the workflow on push or pull request events
 on:
   push:
   pull_request:
+    types: [opened]
+    
 jobs:
   cpp-linter:
     name: cpp-linter
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v2
-      - name: C/C++ Lint Action
-        env:
-            GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+      # Checkout the code base
+      - name: Checkout code
+        uses: actions/checkout@v2
+      # Run linter against code base
+      - name: Lint code
         uses: shenxianpeng/cpp-linter-action@master-py
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         with:
           style: 'google'
           version: '11'
