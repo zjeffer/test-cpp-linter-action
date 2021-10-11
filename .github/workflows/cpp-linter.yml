@@ -24,6 +24,12 @@ jobs:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         with:
           style: 'google'
-          version: '11'
-          diff-only: ture
+          files-changed-only: true
+          version: '12'
+          diff-only: true
           verbosity: '10'
+          gnore: .github|demo.hpp|!demo.cpp
+      - name: Fail fast?!
+        if: steps.linter.outputs.checks-failed > 0
+        run: |
+          echo "Some files failed the linting checks!"
