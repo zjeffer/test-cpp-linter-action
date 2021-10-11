@@ -2,21 +2,12 @@
 #include "demo.hpp"
 #include <stdio.h>
 
-
-
-
-int main(){
-
-    for (;;) break;
-
+int main()
+{
+    for (;;)
+        break;
 
     printf("Hello world!\n");
 
-    
-    
-
-    return 0;}
-
-
-
-
+    return 0;
+}
