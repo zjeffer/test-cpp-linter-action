@@ -28,7 +28,7 @@ jobs:
           version: '12'
           diff-only: true
           verbosity: '10'
-          gnore: .github|demo.hpp|!demo.cpp
+          gnore: .|!demo.cpp|!demo.hpp
           thread-comments: true
       - name: Fail fast?!
         if: steps.linter.outputs.checks-failed > 0

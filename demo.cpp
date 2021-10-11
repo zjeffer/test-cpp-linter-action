@@ -1,6 +1,6 @@
 /** This is a very ugly test code (doomed to fail linting) */
 #include "demo.hpp"
-#include <stdio.h>
+#include <cstdio>
 
 int main()
 {
