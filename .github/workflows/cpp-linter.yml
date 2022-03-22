@@ -19,7 +19,7 @@ jobs:
         uses: actions/checkout@v2
       # Run linter against code base
       - name: Lint code
-        uses: shenxianpeng/cpp-linter-action@master
+        uses: 2bndy5/cpp-linter-action@better-rest-api-usage
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         with:
