@@ -1,10 +1,7 @@
 name: cpp-linter as pkg
 
 on:
-  push:
-    paths-ignore: "docs/**"
-  pull_request:
-    paths-ignore: "docs/**"
+  workflow_dispatch:
 
 jobs:
   cpp-linter:
@@ -13,7 +10,7 @@ jobs:
     strategy:
       matrix:
         clang-version: ['9','10', '11', '12', '13', '14']
-        repo: ['shenxianpeng/cpp-linter-action']
+        repo: ['cpp-linter/cpp-linter-action']
         branch: ['master']
       fail-fast: false
 
