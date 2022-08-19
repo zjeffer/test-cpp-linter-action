@@ -9,7 +9,7 @@ jobs:
 
     strategy:
       matrix:
-        clang-version: ['9','10', '11', '12', '13', '14']
+        clang-version: ['7', '8', '9','10', '11', '12', '13', '14']
         repo: ['cpp-linter/cpp-linter-action']
         branch: ['latest']
       fail-fast: false
@@ -17,15 +17,19 @@ jobs:
     steps:
 
       - uses: actions/checkout@v3
-      - uses: actions/setup-python@v3
-      - name: Install clang-tools
-        uses: KyleMayes/install-llvm-action@v1
         with:
-          version: ${{ matrix.clang-version }}
-          directory: ${{ runner.temp }}/llvm
+          submodules: true
 
-      - name: Install linter package
-        run: python3 -m pip install git+https://github.com/${{ matrix.repo }}/@${{ matrix.branch }}
+      - uses: actions/setup-python@v4
+
+      - name: install workflow deps
+        run: python -m pip install clang-tools git+https://github.com/${{ matrix.repo }}/@${{ matrix.branch }}
+
+      - name: Install clang-tools
+        run: clang-tools -install ${{ matrix.clang-version }} --directory ${{ runner.temp }}/llvm
+
+      - name: Setup VS dev env
+        uses: seanmiddleditch/gha-setup-vsdevenv@v4
 
       - name: Cache the build artifacts
         id: cache-build
@@ -36,7 +40,7 @@ jobs:
 
       - name: Generate  compiler database
         if: steps.cache-build.outputs.cache-hit != 'true'
-        run: mkdir build && cmake -Bbuild src
+        run: mkdir build && cmake -Bbuild src -G "NMake Makefiles"
 
       - name: run linter as package
         id: linter
