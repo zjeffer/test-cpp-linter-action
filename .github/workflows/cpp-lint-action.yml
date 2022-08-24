@@ -39,13 +39,14 @@ jobs:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         with:
           style: file
-          files-changed-only: ${{ matrix.clang-version == '12' }}
+          files-changed-only: false
           # to ignore all build folder contents
           ignore: build
           # database: build
           verbosity: 9
           version: ${{ matrix.clang-version }}
           thread-comments: ${{ matrix.clang-version == '12' }}
+          file-annotations: ${{ matrix.clang-version == '12' }}
 
       - name: Fail fast?!
         if: steps.linter.outputs.checks-failed > 0
