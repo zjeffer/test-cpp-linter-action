@@ -32,7 +32,7 @@ jobs:
       # - name: Move database to src folder
       #   run: mv build/compile_commands.json src/
 
-      - name: run linter as action
+      - name: Run linter as action
         uses: cpp-linter/cpp-linter-action@latest
         id: linter
         env:
