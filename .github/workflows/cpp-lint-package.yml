@@ -59,9 +59,9 @@ jobs:
             -p=build \
             -V=${{ runner.temp }}/llvm \
             -f=false \
+            --extra-arg="-std=c++14 -Wall" \
             --thread-comments=${{ matrix.clang-version == '12' }} \
-            -a=${{ matrix.clang-version == '12' }} \
-            --extra-arg="-std=c++14 -Wall"
+            -a=${{ matrix.clang-version == '12' }} 
 
       - name: Fail fast?!
         if: steps.linter.outputs.checks-failed > 0
