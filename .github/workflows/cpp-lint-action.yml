@@ -51,6 +51,8 @@ jobs:
 
       - name: Fail fast?!
         if: steps.linter.outputs.checks-failed > 0
-        run: echo "some linter checks failed"
+        run: | 
+          echo "some linter checks failed"
+          echo "${{ env.checks-failed }}"
         # for actual deployment
         # run: exit 1
