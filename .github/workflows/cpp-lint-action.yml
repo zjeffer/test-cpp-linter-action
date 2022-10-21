@@ -50,7 +50,7 @@ jobs:
           extra-args: -std=c++14 -Wall
 
       - name: Fail fast?!
-        if: steps.linter.outputs.checks-failed > 0
+        # if: steps.linter.outputs.checks-failed > 0
         run: | 
           echo "some linter checks failed"
           echo "${{ env.checks-failed }}"
