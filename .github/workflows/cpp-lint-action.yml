@@ -32,7 +32,7 @@ jobs:
         run: mkdir build && cmake -Bbuild src
 
       - name: Run linter as action
-        uses: cpp-linter/cpp-linter-action@latest
+        uses: zjeffer/cpp-linter-action@feat/zjeffer/test
         id: linter
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
@@ -41,7 +41,7 @@ jobs:
           files-changed-only: false
           # to ignore all build folder contents
           ignore: build
-          database: build
+          database: ${{github.workspace}}/build/
           verbosity: 9
           version: ${{ matrix.clang-version }}
           thread-comments: ${{ matrix.clang-version == '12' }}
